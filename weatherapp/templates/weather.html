@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Epic Web Page</title>
+    <meta name="description" content="A brief description of the page">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Your Name">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'design.css' %}"> 
+</head>
+<body>
+    <header>
+        <h1>Check your CIty Temperature Here!!</h1>
+    </header>
+    
+    <form method='post'> 
+        {% csrf_token %}
+        <label for="city">Search City:</label>
+        <input type="text" id="city" name="city" placeholder="search">
+        <button type="submit">SUBMIT</button>
+    </form>
+
+    {% if country_code %}
+    <h3>Code Of Country : {{country_code}}</h3>
+    <h3>Coordinates:{{coordinate}}</h3>
+    <h3>Temperature : {{temp}}</h3>
+    {% endif %}
+
+    <footer>
+        <p>© 2025 Your Name. All rights reserved.</p>
+        <p><a href="https://yourwebsite.com">Visit our website</a></p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" style="display:none; position:fixed; bottom:20px; right:20px;" onclick="scrollToTop()">Top</button>
+
+    <script>
+        // Smooth scroll to top
+window.onscroll = function() {
+    const scrollToTopButton = document.getElementById('scrollToTop');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopButton.style.display = "block";
+    } else {
+        scrollToTopButton.style.display = "none";
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Form submission alert
+
+
+    </script>
+</body>
+</html>
